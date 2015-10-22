@@ -7,7 +7,7 @@ jdk:
   - oraclejdk8
 # Not sure how to install python3-pip
 script:
-  - pip install --user deadlockreporter
+  - pip install --user deadlockreporter==0.0.1
   - python -m deadlockreporter -t 300 lein test
 cache:
   directories:
