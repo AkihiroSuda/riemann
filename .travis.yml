@@ -1,19 +1,14 @@
-sudo: false
+sudo: true
 language: clojure
 lein: lein2
 jdk:
   - openjdk7
   - oraclejdk7
   - oraclejdk8
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - python3
-    - python3-pip
 before_script:
-  - pip3 install deadlockreporter==0.0.1
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -q python3-pip
+  - sudo pip3 install deadlockreporter==0.0.1
 script:
   - deadlockreporter -t 300 lein test
 cache:
