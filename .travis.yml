@@ -1,16 +1,14 @@
-sudo: true
+sudo: false
 language: clojure
 lein: lein2
 jdk:
   - openjdk7
   - oraclejdk7
   - oraclejdk8
-before_script:
-  - sudo apt-get update -qq
-  - sudo apt-get install -y -q python3-pip
-  - sudo pip3 install deadlockreporter==0.0.1
+# Not sure how to install python3-pip
 script:
-  - deadlockreporter -t 300 lein test
+  - pip install --user deadlockreporter
+  - python -m deadlockreporter -t 300 lein test
 cache:
   directories:
     - $HOME/.m2
