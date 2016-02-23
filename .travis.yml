@@ -7,6 +7,7 @@ jdk:
   - oraclejdk8
 script:
   - pip install --user deadlockreporter==0.0.1
+  - sh -c 'for f in $(seq 1 30); do python -m deadlockreporter -t 300 lein test :only riemann.transport-test; done'
   - python -m deadlockreporter -t 300 lein test
 cache:
   directories:
