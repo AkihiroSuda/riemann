@@ -5,7 +5,9 @@ jdk:
   - openjdk7
   - oraclejdk7
   - oraclejdk8
-
+script:
+  - pip install --user deadlockreporter==0.0.1
+  - python -m deadlockreporter -t 300 lein test
 cache:
   directories:
     - $HOME/.m2
